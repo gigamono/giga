@@ -1,12 +1,19 @@
-use clap::Parser;
+use clap::{Parser, Subcommand};
 
-/// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[clap(about, version, author)]
 struct Args {
+    #[clap(subcommand)]
+    commands: Commands,
+}
 
+#[derive(Subcommand, Debug)]
+enum Commands {
+    Init {},
+    Build {},
+    Run {},
 }
 
 fn main() {
-    let args = Args::parse();
+    let _ = Args::parse();
 }
